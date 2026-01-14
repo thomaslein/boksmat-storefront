@@ -3,30 +3,57 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  /* 1. Map the fonts from layout.tsx */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  /* 2. Brand Color Palette */
+  --color-brand-cream: #f9f7f2;
+  --color-brand-dark: #1b3b36;
+  --color-brand-accent: #d95d39;
+  --color-brand-sand: #e8e2d6;
+
+  /* 3. Aesthetic Tweaks (Sharp corners like the target site) */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    /* Use the subtle 'sand' color for all borders by default */
+    border-color: var(--color-brand-sand);
+  }
+
+    ::selection {
+    background-color: var(--color-brand-accent);
+    color: white;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-dark font-sans antialiased;
+  }
+
+  /* Target site uses Bold, Uppercase, Serif headers */
+  h1, h2, h3, h4, h5 {
+    @apply font-serif font-semibold uppercase tracking-wider;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Custom focus styles to match the dark green theme */
+a,
+input,
+button {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream;
 }
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.6px);
   }
-}
-
-a,
-input,
-button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 }

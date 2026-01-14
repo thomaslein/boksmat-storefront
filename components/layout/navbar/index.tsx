@@ -1,5 +1,4 @@
 import CartModal from "components/cart/modal";
-import LogoSquare from "components/logo-square";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
 import Link from "next/link";
@@ -13,32 +12,33 @@ export async function Navbar() {
   const menu = await getMenu("next-js-frontend-header-menu");
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
-      <div className="block flex-none md:hidden">
-        <Suspense fallback={null}>
-          <MobileMenu menu={menu} />
-        </Suspense>
-      </div>
-      <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
-          <Link
-            href="/"
-            prefetch={true}
-            className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
-          >
-            <LogoSquare />
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+    <nav className="border-b border-brand-sand bg-brand-cream p-4 lg:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between">
+        
+        {/* 1. Left Section: Logo & Mobile Menu */}
+        <div className="flex flex-1 items-center">
+          <div className="md:hidden">
+            <Suspense fallback={null}>
+              <MobileMenu menu={menu} />
+            </Suspense>
+          </div>
+          <Link href="/" prefetch={true} className="flex items-center">
+             {/* Text-based logo for that editorial feel */}
+            <span className="font-serif text-2xl font-bold uppercase tracking-tighter text-brand-dark">
               {SITE_NAME}
-            </div>
+            </span>
           </Link>
+        </div>
+
+        {/* 2. Center Section: Navigation Links */}
+        <div className="hidden flex-none md:block">
           {menu.length ? (
-            <ul className="hidden gap-6 text-sm md:flex md:items-center">
+            <ul className="flex items-center gap-8">
               {menu.map((item: Menu) => (
                 <li key={item.title}>
                   <Link
                     href={item.path}
-                    prefetch={true}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                    className="font-serif text-xs font-semibold uppercase tracking-widest text-brand-dark hover:opacity-60"
                   >
                     {item.title}
                   </Link>
@@ -47,14 +47,19 @@ export async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
+
+        {/* 3. Right Section: Search & Cart */}
+        <div className="flex flex-1 items-center justify-end gap-4">
+          <div className="hidden lg:block w-48">
+            <Suspense fallback={<SearchSkeleton />}>
+              <Search />
+            </Suspense>
+          </div>
+          <div className="flex h-10 w-10 items-center justify-center text-brand-dark">
+             <CartModal />
+          </div>
         </div>
-        <div className="flex justify-end md:w-1/3">
-          <CartModal />
-        </div>
+        
       </div>
     </nav>
   );
