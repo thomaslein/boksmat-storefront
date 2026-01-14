@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
-  const isInMaintenanceMode = true; 
+export function proxy(req: NextRequest) {
+  const isInMaintenanceMode = false; 
   const { pathname } = req.nextUrl;
 
   // 1. Allow access to the maintenance page itself
