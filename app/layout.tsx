@@ -42,9 +42,7 @@ export default async function RootLayout({
   const cart = getCart();
 
   return (
-    // 2. Add the font variables to the html tag
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      {/* 3. Set the background to a cream color and text to a dark "Forest Green/Black" */}
       <body className="bg-[#F9F7F2] text-[#1B3B36] font-sans antialiased selection:bg-[#D95D39] selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
