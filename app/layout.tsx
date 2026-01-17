@@ -1,24 +1,11 @@
 import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
-import { WelcomeToast } from "components/welcome-toast";
+import { GeistSans } from "geist/font/sans";
 import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
-import { Fraunces, Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
-
-const serif = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 const { SITE_NAME } = process.env;
 
@@ -39,17 +26,17 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  // Don't await the fetch, pass the Promise to the context provider
   const cart = getCart();
 
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      <body className="bg-[#F9F7F2] text-[#1B3B36] font-sans antialiased selection:bg-[#D95D39] selection:text-white">
+    <html lang="en" className={GeistSans.variable}>
+      <body className="bg-[#fcf7cd] text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
           <main>
             {children}
             <Toaster closeButton />
-            <WelcomeToast />
           </main>
         </CartProvider>
       </body>
