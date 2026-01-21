@@ -10,7 +10,7 @@ import Search, { SearchSkeleton } from "./search";
 const { SITE_NAME } = process.env;
 
 export async function Navbar() {
-  const menu = await getMenu("next-js-frontend-header-menu");
+  const menu = await getMenu("header-menu");
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
@@ -36,7 +36,7 @@ export async function Navbar() {
                   <Link
                     href={item.path}
                     prefetch={true}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline"
                   >
                     {item.title}
                   </Link>

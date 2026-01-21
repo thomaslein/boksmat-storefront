@@ -3,6 +3,7 @@ import { Navbar } from "components/layout/navbar";
 import { GeistSans } from "geist/font/sans";
 import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
+import { Cormorant_Garamond, Kaushan_Script } from 'next/font/google';
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -21,6 +22,20 @@ export const metadata = {
   },
 };
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const kaushan = Kaushan_Script({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-kaushan',
+  display: 'swap',
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -30,8 +45,8 @@ export default async function RootLayout({
   const cart = getCart();
 
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="bg-[#fcf7cd] text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
+    <html lang="nb" className={`${GeistSans.variable} ${kaushan.variable} ${cormorant.variable}`}>
+      <body className="bg-[#fcf7cd] text-black">
         <CartProvider cartPromise={cart}>
           <Navbar />
           <main>

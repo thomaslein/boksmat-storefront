@@ -13,6 +13,8 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
+      <h1>Dette er en header</h1>
+      <p>Dette er en body tekst</p>
       <ThreeItemGrid />
       <Carousel />
       <Footer />
