@@ -1,11 +1,10 @@
-import { readFile } from "fs/promises";
-import { ImageResponse } from "next/og";
-import { join } from "path";
-import LogoIcon from "./icons/logo";
+import { readFile } from 'fs/promises';
+import { ImageResponse } from 'next/og';
+import { join } from 'path';
+import LogoIcon from './icons/logo';
 
-export const runtime = 'edge'; // Edge runtime is faster for OG images
+export const runtime = 'edge';
 
-// Define the dimensions of the OG image
 export const size = {
   width: 1200,
   height: 630,
@@ -13,7 +12,9 @@ export const size = {
 
 export const contentType = 'image/png';
 
-export default async function OpengraphImage({ title }: { title?: string }) {
+export default async function OpengraphImage(props?: { title?: string }) {
+  const title = props?.title ?? process.env.SITE_NAME ?? 'BOKSMAT';
+
   const fontPath = join(process.cwd(), 'app/fonts/cormorant-garamond-v21-latin-700.ttf');
   const fontData = await readFile(fontPath);
 
@@ -24,7 +25,7 @@ export default async function OpengraphImage({ title }: { title?: string }) {
           <LogoIcon width="80" height="74" fill="#1a1a1a" />
         </div>
         <h1 tw="mt-12 text-7xl font-bold text-[#1a1a1a] text-center px-20">
-          {title || "BOKSMAT"}
+          {title}
         </h1>
         <p tw="mt-4 text-2xl text-[#1a1a1a] opacity-60">
           Gourmet på boks • Lein & Co
@@ -35,9 +36,9 @@ export default async function OpengraphImage({ title }: { title?: string }) {
       ...size,
       fonts: [
         {
-          name: "Cormorant",
+          name: 'Cormorant',
           data: fontData,
-          style: "normal",
+          style: 'normal',
           weight: 700,
         },
       ],
