@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Logo(props: React.ComponentProps<"svg">) {
   return (
-    <div className="relative left-5 top-2 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="transform transition-transform duration-300 hover:scale-105 scale-100">
         <div className="tin-logo-body">
           <div className="tin-score-line"></div>
