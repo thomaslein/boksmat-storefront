@@ -14,10 +14,7 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function OpengraphImage(props?: { title?: string }) {
-  const title = props?.title ?? process.env.SITE_NAME ?? 'BOKSMAT';
-
-  // 2. Read the .ttf file from the root public directory
-  // Note: Ensure the file is a .ttf (not .woff2)
+  const title = props?.title ?? process.env.SITE_NAME;
   const fontPath = join(process.cwd(), 'public/fonts/cormorant-garamond-v21-latin-700.ttf');
   const fontData = readFileSync(fontPath);
 

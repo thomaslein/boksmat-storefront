@@ -5,63 +5,63 @@
 
 /* 1. Manual Font Declarations */
 @layer base {
-  /* --- CORMORANT GARAMOND --- */
+  /* --- Cormorant SERIF --- */
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-italic.woff2') format('woff2');
     font-weight: 400; font-style: italic; font-display: swap;
   }
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-300.woff2') format('woff2');
     font-weight: 300; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-500.woff2') format('woff2');
     font-weight: 500; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-600.woff2') format('woff2');
     font-weight: 600; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Cormorant Custom';
+    font-family: 'Cormorant';
     src: url('/fonts/cormorant-garamond-v21-latin-700.woff2') format('woff2');
     font-weight: 700; font-style: normal; font-display: swap;
   }
 
   /* --- GEIST SANS --- */
   @font-face {
-    font-family: 'Geist Custom';
+    font-family: 'Geist';
     src: url('/fonts/geist-v4-latin-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Geist Custom';
+    font-family: 'Geist';
     src: url('/fonts/geist-v4-latin-300.woff2') format('woff2');
     font-weight: 300; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Geist Custom';
+    font-family: 'Geist';
     src: url('/fonts/geist-v4-latin-600.woff2') format('woff2');
     font-weight: 600; font-style: normal; font-display: swap;
   }
   @font-face {
-    font-family: 'Geist Custom';
+    font-family: 'Geist';
     src: url('/fonts/geist-v4-latin-700.woff2') format('woff2');
     font-weight: 700; font-style: normal; font-display: swap;
   }
 
   /* --- KAUSHAN SCRIPT --- */
   @font-face {
-    font-family: 'Kaushan Custom';
+    font-family: 'Kaushan';
     src: url('/fonts/kaushan-script-v19-latin-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap;
   }
@@ -69,9 +69,9 @@
 
 /* 2. Tailwind Theme Mapping */
 @theme inline {
-  --font-serif: 'Cormorant Custom', serif;
-  --font-sans: 'Geist Custom', ui-sans-serif, system-ui;
-  --font-kaushan: 'Kaushan Custom', cursive;
+  --font-serif: 'Cormorant', serif;
+  --font-sans: 'Geist', ui-sans-serif, system-ui;
+  --font-kaushan: 'Kaushan', cursive;
 }
 
 /* 3. Global Styles & Inheritance */
