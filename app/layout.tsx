@@ -24,9 +24,10 @@ export const metadata = {
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'], 
   variable: '--font-cormorant',
   display: 'swap',
+  preload: true,
 });
 
 const kaushan = Kaushan_Script({
@@ -34,6 +35,7 @@ const kaushan = Kaushan_Script({
   weight: '400',
   variable: '--font-kaushan',
   display: 'swap',
+  preload: true,
 });
 
 export default async function RootLayout({
