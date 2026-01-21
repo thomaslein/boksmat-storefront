@@ -7,6 +7,7 @@
   /* This maps your CSS variable to the 'font-kaushan' utility class */
   --font-kaushan: var(--font-kaushan);
   --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-geist);
 }
 
 @layer base {
@@ -29,9 +30,15 @@
     @apply font-kaushan;
   }
 
-  /* Buttons and Navigation usually look better in Sans for legibility */
-  button, nav, input, a {
+ /* Force UI elements to use the mapped Sans font */
+  button, 
+  nav, 
+  input, 
+  a, 
+  textarea, 
+  select {
     @apply font-sans;
+    font-family: var(--font-sans); /* Fallback to ensure inheritance */
   }
 }
 

@@ -1,11 +1,10 @@
 import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
-import { GeistSans } from "geist/font/sans";
 import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
-import { cormorant, kaushan } from './fonts';
+import { cormorant, geist, kaushan } from "./fonts";
 import "./globals.css";
 
 const { SITE_NAME } = process.env;
@@ -22,7 +21,6 @@ export const metadata = {
   },
 };
 
-
 export default async function RootLayout({
   children,
 }: {
@@ -32,7 +30,7 @@ export default async function RootLayout({
   const cart = getCart();
 
   return (
-    <html lang="nb" className={`${GeistSans.variable} ${kaushan.variable} ${cormorant.variable}`}>
+    <html lang="nb" className={`${geist.variable} ${kaushan.variable} ${cormorant.variable}`}>
       <body className="bg-[#fcf7cd] text-black">
         <CartProvider cartPromise={cart}>
           <Navbar />
