@@ -72,6 +72,19 @@
   --font-serif: 'Cormorant', serif;
   --font-sans: 'Geist', ui-sans-serif, system-ui;
   --font-kaushan: 'Kaushan', cursive;
+
+  --color-tin-black: #1a1a1a;
+  --color-tin-outline: #000000;
+  --color-gold-main: #d4af37;
+  --color-gold-bright: #f1c40f;
+  --color-gold-muted: #9c802d;
+  --color-score-line: #333333;
+
+  --color-brand-cream: #fcf7cd; 
+  --color-brand-paper: #F5F2ED;
+  --color-brand-ocean: #141B25;
+  --color-brand-slate: #2d3436;
+  --color-brand-grey: #ececec; 
 }
 
 /* 3. Global Styles & Inheritance */
@@ -97,6 +110,8 @@
   }
 }
 
+
+
 /* 4. Utilities & Overrides */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
@@ -107,3 +122,51 @@
 a, input, button {
   @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50;
 }
+
+@layer components {
+  /* Main Body: 150px wide, 75px high */
+  .tin-logo-body {
+    @apply relative w-[150px] h-[75px] bg-tin-black border-[3px] border-tin-outline rounded-[15px] flex items-center justify-center overflow-hidden;
+  }
+
+  /* Score line: nicely inset */
+  .tin-score-line {
+    @apply absolute inset-[4px] border-[1.5px] border-score-line rounded-[10px] pointer-events-none;
+  }
+
+  /* Opener container: positioned for 75px scale */
+  .tin-opener-container {
+    @apply absolute right-[8px] w-[40px] h-[22px] flex items-center justify-end z-10;
+  }
+
+  /* Tab: 32px wide, 16px high */
+  .tin-pull-tab {
+    @apply relative w-[32px] h-[16px] bg-gold-main border-[1.5px] border-tin-outline rounded-[4px] flex items-center justify-between px-[3px] box-border;
+  }
+
+  /* Internal tab highlight */
+  .tin-pull-tab::after {
+    content: '';
+    @apply absolute inset-[1.5px] border border-white/15 rounded-[2px] pointer-events-none;
+  }
+
+  /* Finger hole: 8px diameter */
+  .tin-finger-hole {
+    @apply w-[8px] h-[8px] bg-tin-black border-[1px] border-tin-outline rounded-full ml-auto;
+  }
+
+  .tin-tab-divider {
+    @apply w-[1.5px] h-[6px] bg-tin-outline rounded-[1px] mx-[3px] opacity-50;
+  }
+
+  /* Rivet: 4px diameter */
+  .tin-rivet {
+    @apply w-[4px] h-[4px] bg-gold-bright border-[1px] border-tin-outline rounded-full;
+  }
+
+  /* Label: 8px font looks very high-end at this scale */
+  .tin-label {
+    @apply  text-sm pr-[30px] font-bold text-gold-muted uppercase tracking-[2px] opacity-100 select-none;
+  }
+}
+  

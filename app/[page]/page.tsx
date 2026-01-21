@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BackButton from "components/back-button";
 import Prose from "components/prose";
 import { getPage } from "lib/shopify";
 import { notFound } from "next/navigation";
@@ -33,6 +34,7 @@ export default async function Page(props: {
 
   return (
     <>
+      <BackButton />
       <h1 className="mb-8 text-5xl font-bold">{page.title}</h1>
       <Prose className="mb-8" html={page.body} />
       <p className="text-sm italic">

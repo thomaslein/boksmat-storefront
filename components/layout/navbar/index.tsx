@@ -7,8 +7,6 @@ import Logo from "../../icons/logo";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
 
-const { SITE_NAME } = process.env;
-
 export async function Navbar() {
   const menu = await getMenu("header-menu");
 
@@ -27,7 +25,6 @@ export async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
             <Logo />
-            <span>{SITE_NAME}</span>
           </Link>
           {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
