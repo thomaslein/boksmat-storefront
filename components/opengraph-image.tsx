@@ -1,9 +1,10 @@
-import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 import { ImageResponse } from 'next/og';
 import { join } from 'path';
 import LogoIcon from './icons/logo';
 
-export const runtime = 'edge';
+// 1. Switch to 'nodejs' runtime for stable filesystem access
+export const runtime = 'nodejs'; 
 
 export const size = {
   width: 1200,
@@ -15,8 +16,10 @@ export const contentType = 'image/png';
 export default async function OpengraphImage(props?: { title?: string }) {
   const title = props?.title ?? process.env.SITE_NAME ?? 'BOKSMAT';
 
-  const fontPath = join(process.cwd(), 'app/fonts/cormorant-garamond-v21-latin-700.ttf');
-  const fontData = await readFile(fontPath);
+  // 2. Read the .ttf file from the root public directory
+  // Note: Ensure the file is a .ttf (not .woff2)
+  const fontPath = join(process.cwd(), 'public/fonts/cormorant-garamond-v21-latin-700.ttf');
+  const fontData = readFileSync(fontPath);
 
   return new ImageResponse(
     (

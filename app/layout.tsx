@@ -4,7 +4,6 @@ import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
-import { cormorant, geist, kaushan } from "./fonts";
 import "./globals.css";
 
 const { SITE_NAME } = process.env;
@@ -30,7 +29,7 @@ export default async function RootLayout({
   const cart = getCart();
 
   return (
-    <html lang="nb" className={`${geist.variable} ${kaushan.variable} ${cormorant.variable}`}>
+    <html lang="nb">
       <body className="bg-[#fcf7cd] text-black">
         <CartProvider cartPromise={cart}>
           <Navbar />

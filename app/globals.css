@@ -3,54 +3,107 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
-@theme inline {
-  /* This maps your CSS variable to the 'font-kaushan' utility class */
-  --font-kaushan: var(--font-kaushan);
-  --font-serif: var(--font-cormorant);
-  --font-sans: var(--font-geist);
+/* 1. Manual Font Declarations */
+@layer base {
+  /* --- CORMORANT GARAMOND --- */
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-300.woff2') format('woff2');
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-500.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-600.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant Custom';
+    src: url('/fonts/cormorant-garamond-v21-latin-700.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+
+  /* --- GEIST SANS --- */
+  @font-face {
+    font-family: 'Geist Custom';
+    src: url('/fonts/geist-v4-latin-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geist Custom';
+    src: url('/fonts/geist-v4-latin-300.woff2') format('woff2');
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geist Custom';
+    src: url('/fonts/geist-v4-latin-600.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geist Custom';
+    src: url('/fonts/geist-v4-latin-700.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+
+  /* --- KAUSHAN SCRIPT --- */
+  @font-face {
+    font-family: 'Kaushan Custom';
+    src: url('/fonts/kaushan-script-v19-latin-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
 }
 
+/* 2. Tailwind Theme Mapping */
+@theme inline {
+  --font-serif: 'Cormorant Custom', serif;
+  --font-sans: 'Geist Custom', ui-sans-serif, system-ui;
+  --font-kaushan: 'Kaushan Custom', cursive;
+}
+
+/* 3. Global Styles & Inheritance */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
 
- /* Default body text uses Cormorant */
   body {
     @apply font-serif;
-    font-size: 1.1rem; /* Cormorant runs slightly small, so 1.1rem is usually better */
+    font-size: 1.1rem;
+    background-color: #fcf7cd;
+    color: black;
   }
 
-  /* All headers use Kaushan Script */
   h1, h2, h3, h4, h5, h6 {
     @apply font-kaushan;
   }
 
- /* Force UI elements to use the mapped Sans font */
-  button, 
-  nav, 
-  input, 
-  a, 
-  textarea, 
-  select {
+  button, nav, input, a, textarea, select {
     @apply font-sans;
-    font-family: var(--font-sans); /* Fallback to ensure inheritance */
+    font-family: var(--font-sans);
   }
 }
 
-
+/* 4. Utilities & Overrides */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.6px);
   }
 }
 
-a,
-input,
-button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+a, input, button {
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50;
 }
