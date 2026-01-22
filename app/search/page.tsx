@@ -17,15 +17,15 @@ export default async function SearchPage(props: {
     sorting.find((item) => item.slug === sort) || defaultSort;
 
   const products = await getProducts({ sortKey, reverse, query: searchValue });
-  const resultsText = products.length > 1 ? "results" : "result";
+  const resultsText = products.length > 1 ? "resultater" : "resultat";
 
   return (
     <>
       {searchValue ? (
         <p className="mb-4">
           {products.length === 0
-            ? "There are no products that match "
-            : `Showing ${products.length} ${resultsText} for `}
+            ? "Fant ingen produkter med "
+            : `Viser ${products.length} ${resultsText} for `}
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>
       ) : null}

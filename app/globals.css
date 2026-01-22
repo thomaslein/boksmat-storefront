@@ -81,10 +81,11 @@
   --color-score-line: #333333;
 
   --color-brand-cream: #fcf7cd; 
-  --color-brand-paper: #F5F2ED;
+  --color-brand-paper: #fffdf5;
   --color-brand-ocean: #141B25;
   --color-brand-slate: #2d3436;
   --color-brand-grey: #ececec; 
+  --color-brand-olive: #4a5d4e;
 }
 
 /* 3. Global Styles & Inheritance */
