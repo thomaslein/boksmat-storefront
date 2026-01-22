@@ -49,7 +49,7 @@ export default function CartModal() {
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
+      <button className="cursor-pointer" aria-label="Åpne handlekurv" onClick={openCart}>
         <OpenCart quantity={cart?.totalQuantity} />
       </button>
       <Transition show={isOpen}>
@@ -77,7 +77,7 @@ export default function CartModal() {
             <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-brand-paper p-6 text-black backdrop-blur-xl md:w-[390px]">
               <div className="flex items-center justify-between">
                 <p className="text-lg font-semibold">Handlekurv</p>
-                <button aria-label="Close cart" onClick={closeCart}>
+                <button className="cursor-pointer" aria-label="Lukk handlekurv" onClick={closeCart}>
                   <CloseCart />
                 </button>
               </div>
@@ -246,7 +246,7 @@ function CheckoutButton() {
 
   return (
     <button
-      className="block w-full rounded-full bg-black p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
+      className="block w-full rounded-full bg-black p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100 cursor-pointer"
       type="submit"
       disabled={pending}
     >
