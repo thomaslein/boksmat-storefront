@@ -18,6 +18,9 @@ export const metadata = {
     follow: true,
     index: true,
   },
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default async function RootLayout({

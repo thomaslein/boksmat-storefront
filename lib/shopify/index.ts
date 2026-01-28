@@ -357,11 +357,11 @@ export async function getCollections(): Promise<Collection[]> {
     return [
       {
         handle: "",
-        title: "All",
-        description: "All products",
+        title: "Alle",
+        description: "Alle produkter",
         seo: {
-          title: "All",
-          description: "All products",
+          title: "Alle",
+          description: "Alle produkter",
         },
         path: "/search",
         updatedAt: new Date().toISOString(),
@@ -376,11 +376,11 @@ export async function getCollections(): Promise<Collection[]> {
   const collections = [
     {
       handle: "",
-      title: "All",
-      description: "All products",
+      title: "Alle",
+      description: "Alle produkter",
       seo: {
         title: "All",
-        description: "All products",
+        description: "Alle produkter",
       },
       path: "/search",
       updatedAt: new Date().toISOString(),

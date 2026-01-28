@@ -3,7 +3,7 @@ import React from 'react';
 export default function Logo(props: React.ComponentProps<"svg">) {
   return (
     <div className="flex flex-col items-center">
-      <div className="transform transition-transform duration-300 hover:scale-105 scale-100">
+      <div className="transform transition-transform duration-300 hover:scale-85 scale-80">
         <div className="tin-logo-body">
           <div className="tin-score-line"></div>
           <span className="tin-label">Boksmat</span>
@@ -18,7 +18,7 @@ export default function Logo(props: React.ComponentProps<"svg">) {
           </div>
         </div>
       </div>
-      <span className="font-serif text-lg font-semibold">Gourmet på boks</span>
+      <span className="font-serif text-lg font-semibold -mt-2">Gourmet på boks</span>
   </div>
   );
 }
