@@ -81,13 +81,13 @@ export default async function ProductPage(props: {
           __html: JSON.stringify(productJsonLd),
         }}
       />
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4">
+      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 py-6">
         <BackButton />
-        <div className="flex flex-col rounded-lg border border-neutral-200 bg-brand-paper p-8 md:p-12 lg:flex-row lg:gap-8">
-          <div className="h-full w-full basis-full lg:basis-4/6">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:items-start">
+          <div className="w-full lg:w-1/2 lg:sticky lg:top-6 self-start">
             <Suspense
               fallback={
-                <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
+                <div className="aspect-square w-full bg-brand-paper rounded-lg" />
               }
             >
               <Gallery
@@ -99,7 +99,7 @@ export default async function ProductPage(props: {
             </Suspense>
           </div>
 
-          <div className="basis-full lg:basis-2/6">
+          <div className="w-full lg:w-1/2 lg:py-4">
             <Suspense fallback={null}>
               <ProductDescription product={product} />
             </Suspense>

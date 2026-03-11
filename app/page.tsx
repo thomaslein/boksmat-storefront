@@ -1,5 +1,4 @@
-import { Carousel } from "components/carousel";
-import { ThreeItemGrid } from "components/grid/three-items";
+import { CollectionsGrid } from "components/grid/collections-grid";
 import Footer from "components/layout/footer";
 
 export const metadata = {
@@ -13,8 +12,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <ThreeItemGrid />
-      <Carousel />
+      <CollectionsGrid />
       <Footer />
     </>
   );
