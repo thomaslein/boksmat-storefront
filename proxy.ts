@@ -1,28 +1,29 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
+
+const isInMaintenanceMode = true;
+
+// Matches requests for static files such as /logo.png or /fonts/a.woff2
+const STATIC_FILE = /\.[a-z0-9]+$/i;
 
 export function proxy(req: NextRequest) {
-  const isInMaintenanceMode = true; 
   const { pathname } = req.nextUrl;
 
-  // 1. Allow access to the maintenance page itself
-  if (pathname.startsWith('/maintenance')) {
+  if (!isInMaintenanceMode) {
     return NextResponse.next();
   }
 
-  // 2. Allow access to static files (images, css, etc.)
-  if (pathname.startsWith('/_next') || pathname.includes('.')) {
+  // Allow the maintenance page itself, Next internals and static files
+  if (
+    pathname.startsWith("/maintenance") ||
+    pathname.startsWith("/_next") ||
+    STATIC_FILE.test(pathname)
+  ) {
     return NextResponse.next();
   }
 
-  // 3. Redirect everything else
-  if (isInMaintenanceMode) {
-    return NextResponse.redirect(new URL('/maintenance', req.url));
-  }
-
-  return NextResponse.next();
+  return NextResponse.redirect(new URL("/maintenance", req.url));
 }
 
 export const config = {
-  // This ensures the middleware runs on all page requests
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

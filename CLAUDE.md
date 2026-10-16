@@ -44,7 +44,7 @@ This is **Boksmat**, a Norwegian bookstore storefront built on the [Next.js Comm
 - `lib/shopify/` — All Shopify GraphQL API calls, mutations, and type definitions
 - `lib/constants.ts` — Sort options, cache tags, `HIDDEN_PRODUCT_TAG`
 - `lib/utils.ts` — `baseUrl`, `createUrl`, `ensureStartsWith`, `validateEnvironmentVariables`
-- `proxy.ts` — Middleware logic for maintenance mode (imported by `middleware.ts` if present)
+- `proxy.ts` — Maintenance mode redirect. Next 15.6 canary picks up `proxy.ts` natively; no `middleware.ts` is needed (and none exists)
 
 ### Key Patterns
 
@@ -54,7 +54,7 @@ This is **Boksmat**, a Norwegian bookstore storefront built on the [Next.js Comm
 
 **Cart**: Managed client-side via React context (`components/cart/cart-context.tsx`). The cart Promise is initiated in the root layout and passed down without awaiting, enabling streaming.
 
-**Maintenance mode**: `proxy.ts` contains the middleware function with `isInMaintenanceMode = true` (currently hardcoded on). To disable, set it to `false`. This file needs to be re-exported from a `middleware.ts` at the project root to take effect.
+**Maintenance mode**: `proxy.ts` exports `proxy` with a top-level `isInMaintenanceMode = true` (currently hardcoded on), which redirects all page requests except `/maintenance`, `/_next` and static files. To disable, set it to `false`. Not verified by running the app; if the redirect doesn't happen, check that this Next canary still loads `proxy.ts`.
 
 **Experimental Next.js features in use**: PPR (Partial Pre-Rendering), `inlineCss`, `useCache`.
 
